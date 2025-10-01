@@ -119,7 +119,7 @@ module Control(
                 RegWrite = 1'b1;
                 ALUSrc   = 1'b1;
                 ImmSel   = 3'b000; // I (jalr imm)
-                ALUControl = 4'b0100; // rs1 + imm (target made outside with LSB cleared)
+                ALUControl = 4'b0100; // rs1 + imm 
                 PCSrc = 1'b1;
             end
 
