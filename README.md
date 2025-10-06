@@ -2,7 +2,7 @@
 
 A small, educational RISC-V core written in Verilog. This repository contains RTL in `rtl/` and testbenches in `sim/`.
 
-This README tells you how to simulate the design with Verilator and ModelSim, and how to program the DE10-Lite (Quartus). It also includes troubleshooting tips and how to get Quartus to actually initialize M9K block RAMs.
+This README tells you how to simulate the design with Verilator and ModelSim, and how to program the DE10-Lite (in Quartus). It also includes troubleshooting tips and how to get Quartus to actually initialize M9K block RAMs.
 
 ---
 
@@ -132,7 +132,7 @@ Make sure you compile the `rtl/` files first with `vlog rtl\*.v` so the simulato
 
 ## Synthesizing and programming the DE10-Lite (Quartus)
 
-1. Open the Quartus project or create a new one and add the `rtl/TopLevel.v` as the top-level entity.
+1. Open the Quartus project (quartusproject/RISCVCore.v or create a new one and add the `rtl/TopLevel.v` as the top-level entity.
 2. Set the correct device for the DE10-Lite.
 3. Important: ensure Quartus will include memory initialization for M9K blocks in the programming file (by default it may not). To enable this:
 

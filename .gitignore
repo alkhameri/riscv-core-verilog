@@ -1,0 +1,20 @@
+# Ignore Quartus generated folders and intermediate files
+/quartus project/
+/db/
+/incremental_db/
+/output_files/
+*.rpt
+*.qdb
+*.smsg
+*.sof
+*.pof
+*.htm
+*.html
+
+# Simulation waveforms / generated outputs
+*.vcd
+obj_dir/
+
+# OS files
+.DS_Store
+Thumbs.db

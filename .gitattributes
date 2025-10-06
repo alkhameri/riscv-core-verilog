@@ -1,0 +1,20 @@
+# Mark Quartus/derived outputs as vendored so GitHub linguist ignores them in language stats
+"quartus project/" linguist-vendored
+db/ linguist-vendored
+incremental_db/ linguist-vendored
+output_files/ linguist-vendored
+*.htm linguist-vendored
+*.html linguist-vendored
+*.rpt linguist-vendored
+*.smsg linguist-vendored
+*.sof linguist-vendored
+*.pof linguist-vendored
+*.qdb linguist-vendored
+*.sld linguist-vendored
+*.jdi linguist-vendored
+*.map.summary linguist-vendored
+*.fit.summary linguist-vendored
+
+# Keep relevant project files (qsf/qpf) tracked
+*.qsf linguist-vendored=false
+*.qpf linguist-vendored=false
