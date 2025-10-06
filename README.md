@@ -29,7 +29,7 @@ Clone or download this repository. From the project root you should see `rtl/` a
 ## Quick structure
 
 - `rtl/` - Verilog RTL (TopLevel, ALU, RegisterFile, memories, etc.)
-- `sim/` - Testbenches and simulation helpers (`simple_tb.v`, `RISCVCore_tb.v`, wrapper)
+- `sim/` - Testbenches and simulation helpers (`simple_tb.v`, `RISCVCore_tb.v`)
 
 ---
 
