@@ -1,0 +1,761 @@
+Analysis & Synthesis report for RISCVCore
+Sun Oct 05 18:33:04 2025
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Registers Packed Into Inferred Megafunctions
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated
+ 14. Parameter Settings for Inferred Entity Instance: InstrMem:instr_mem|altsyncram:memory_rtl_0
+ 15. altsyncram Parameter Settings by Entity Instance
+ 16. Port Connectivity Checks: "ALU:alu"
+ 17. Port Connectivity Checks: "Control:control"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Oct 05 18:33:04 2025       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                      ; RISCVCore                                   ;
+; Top-level Entity Name              ; RISCVCore                                   ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 65                                          ;
+;     Total combinational functions  ; 65                                          ;
+;     Dedicated logic registers      ; 38                                          ;
+; Total registers                    ; 38                                          ;
+; Total pins                         ; 185                                         ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 24,576                                      ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; RISCVCore          ; RISCVCore          ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                     ;
++---------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path            ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                             ; Library ;
++---------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------+---------+
+; ../hdl/PCplusimm.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/PCplusimm.v                                       ;         ;
+; ../hdl/ALUmux.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/ALUmux.v                                          ;         ;
+; ../hdl/WBmux.v                              ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/WBmux.v                                           ;         ;
+; ../hdl/Control.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/Control.v                                         ;         ;
+; ../hdl/DataMem.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/DataMem.v                                         ;         ;
+; ../hdl/Reg.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/Reg.v                                             ;         ;
+; ../hdl/InstrMem.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/InstrMem.v                                        ;         ;
+; ../hdl/PCmux.v                              ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/PCmux.v                                           ;         ;
+; ../hdl/PCplus4.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/PCplus4.v                                         ;         ;
+; ../hdl/Extend.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/Extend.v                                          ;         ;
+; ../hdl/ALU.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/hdl/ALU.v                                             ;         ;
+; RISCVCore.v                                 ; yes             ; User Verilog HDL File                                 ; C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v                                 ;         ;
+; altsyncram.tdf                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf                    ;         ;
+; stratix_ram_block.inc                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/stratix_ram_block.inc             ;         ;
+; lpm_mux.inc                                 ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_mux.inc                       ;         ;
+; lpm_decode.inc                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_decode.inc                    ;         ;
+; aglobal191.inc                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc                    ;         ;
+; a_rdenreg.inc                               ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/a_rdenreg.inc                     ;         ;
+; altrom.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altrom.inc                        ;         ;
+; altram.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altram.inc                        ;         ;
+; altdpram.inc                                ; yes             ; Megafunction                                          ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altdpram.inc                      ;         ;
+; db/altsyncram_ql61.tdf                      ; yes             ; Auto-Generated Megafunction                           ; C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf                      ;         ;
+; db/riscvcore.ram0_instrmem_8f043998.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/shuge/Downloads/RISCVcore/synthesis/db/riscvcore.ram0_instrmem_8f043998.hdl.mif ;         ;
++---------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimated Total logic elements              ; 65                  ;
+;                                             ;                     ;
+; Total combinational functions               ; 65                  ;
+; Logic element usage by number of LUT inputs ;                     ;
+;     -- 4 input functions                    ; 15                  ;
+;     -- 3 input functions                    ; 13                  ;
+;     -- <=2 input functions                  ; 37                  ;
+;                                             ;                     ;
+; Logic elements by mode                      ;                     ;
+;     -- normal mode                          ; 21                  ;
+;     -- arithmetic mode                      ; 44                  ;
+;                                             ;                     ;
+; Total registers                             ; 38                  ;
+;     -- Dedicated logic registers            ; 38                  ;
+;     -- I/O registers                        ; 0                   ;
+;                                             ;                     ;
+; I/O pins                                    ; 185                 ;
+; Total memory bits                           ; 24576               ;
+;                                             ;                     ;
+; Embedded Multiplier 9-bit elements          ; 0                   ;
+;                                             ;                     ;
+; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
+; Maximum fan-out                             ; 62                  ;
+; Total fan-out                               ; 837                 ;
+; Average fan-out                             ; 1.47                ;
++---------------------------------------------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                    ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                  ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------+-----------------+--------------+
+; |RISCVCore                                ; 65 (36)             ; 38 (38)                   ; 24576       ; 0          ; 0            ; 0       ; 0         ; 185  ; 0            ; 0          ; |RISCVCore                                                                           ; RISCVCore       ; work         ;
+;    |Control:control|                      ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|Control:control                                                           ; Control         ; work         ;
+;    |Extend:extend|                        ; 9 (9)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|Extend:extend                                                             ; Extend          ; work         ;
+;    |InstrMem:instr_mem|                   ; 0 (0)               ; 0 (0)                     ; 24576       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|InstrMem:instr_mem                                                        ; InstrMem        ; work         ;
+;       |altsyncram:memory_rtl_0|           ; 0 (0)               ; 0 (0)                     ; 24576       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|InstrMem:instr_mem|altsyncram:memory_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_ql61:auto_generated| ; 0 (0)               ; 0 (0)                     ; 24576       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated ; altsyncram_ql61 ; work         ;
+;    |PCplusimm:pc_plus_imm|                ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |RISCVCore|PCplusimm:pc_plus_imm                                                     ; PCplusimm       ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                     ;
++--------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------------------+
+; Name                                                                                 ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                         ;
++--------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------------------+
+; InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 1024         ; 32           ; --           ; --           ; 32768 ; db/RISCVCore.ram0_InstrMem_8f043998.hdl.mif ;
++--------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Registers Removed During Synthesis                          ;
++----------------------------------------+--------------------+
+; Register name                          ; Reason for Removal ;
++----------------------------------------+--------------------+
+; PC[12..31]                             ; Lost fanout        ;
+; Total Number of Removed Registers = 20 ;                    ;
++----------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 38    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Asynchronous Clear ; 38    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                             ;
++---------------------------------+---------------------------------+------+
+; Register Name                   ; Megafunction                    ; Type ;
++---------------------------------+---------------------------------+------+
+; InstrMem:instr_mem|Instr[0..31] ; InstrMem:instr_mem|memory_rtl_0 ; RAM  ;
++---------------------------------+---------------------------------+------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |RISCVCore|Extend:extend|Mux11 ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |RISCVCore|Extend:extend|Mux1  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Source assignments for InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------+
+; Assignment                      ; Value              ; From ; To                                 ;
++---------------------------------+--------------------+------+------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                  ;
++---------------------------------+--------------------+------+------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: InstrMem:instr_mem|altsyncram:memory_rtl_0       ;
++------------------------------------+---------------------------------------------+----------------+
+; Parameter Name                     ; Value                                       ; Type           ;
++------------------------------------+---------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                           ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                          ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                         ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                          ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                         ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                           ; Untyped        ;
+; OPERATION_MODE                     ; ROM                                         ; Untyped        ;
+; WIDTH_A                            ; 32                                          ; Untyped        ;
+; WIDTHAD_A                          ; 10                                          ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                        ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                        ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                        ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                        ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                        ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                        ; Untyped        ;
+; WIDTH_B                            ; 1                                           ; Untyped        ;
+; WIDTHAD_B                          ; 1                                           ; Untyped        ;
+; NUMWORDS_B                         ; 1                                           ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                      ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                      ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                      ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                      ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                      ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                        ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                        ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                        ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                        ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                        ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                        ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                           ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                           ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                        ; Untyped        ;
+; BYTE_SIZE                          ; 8                                           ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                        ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                        ; Untyped        ;
+; INIT_FILE                          ; db/RISCVCore.ram0_InstrMem_8f043998.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                      ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                           ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                      ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                      ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                      ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                             ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                             ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                       ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                       ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                           ; Untyped        ;
+; DEVICE_FAMILY                      ; MAX 10                                      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_ql61                             ; Untyped        ;
++------------------------------------+---------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                       ;
++-------------------------------------------+--------------------------------------------+
+; Name                                      ; Value                                      ;
++-------------------------------------------+--------------------------------------------+
+; Number of entity instances                ; 1                                          ;
+; Entity Instance                           ; InstrMem:instr_mem|altsyncram:memory_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                        ;
+;     -- WIDTH_A                            ; 32                                         ;
+;     -- NUMWORDS_A                         ; 1024                                       ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                               ;
+;     -- WIDTH_B                            ; 1                                          ;
+;     -- NUMWORDS_B                         ; 1                                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                     ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                       ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                  ;
++-------------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:alu"                                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; zero ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Control:control"                                                                       ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; MemRead ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Branch  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Jump    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 185                         ;
+; cycloneiii_ff         ; 38                          ;
+;     CLR               ; 26                          ;
+;     CLR SLD           ; 10                          ;
+;     ENA CLR           ; 2                           ;
+; cycloneiii_io_obuf    ; 71                          ;
+; cycloneiii_lcell_comb ; 66                          ;
+;     arith             ; 44                          ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 12                          ;
+;     normal            ; 22                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 15                          ;
+; cycloneiii_ram_block  ; 24                          ;
+;                       ;                             ;
+; Max LUT depth         ; 6.10                        ;
+; Average LUT depth     ; 2.26                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Sun Oct 05 18:32:56 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCVCore -c RISCVCore
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/pcplusimm.v
+    Info (12023): Found entity 1: PCplusimm File: C:/Users/shuge/Downloads/RISCVcore/hdl/PCplusimm.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/alumux.v
+    Info (12023): Found entity 1: ALUmux File: C:/Users/shuge/Downloads/RISCVcore/hdl/ALUmux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/wbmux.v
+    Info (12023): Found entity 1: WBmux File: C:/Users/shuge/Downloads/RISCVcore/hdl/WBmux.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file /users/shuge/downloads/riscvcore/hdl/control.v
+    Info (12023): Found entity 1: DecodeFields File: C:/Users/shuge/Downloads/RISCVcore/hdl/Control.v Line: 1
+    Info (12023): Found entity 2: Control File: C:/Users/shuge/Downloads/RISCVcore/hdl/Control.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/datamem.v
+    Info (12023): Found entity 1: DataMem File: C:/Users/shuge/Downloads/RISCVcore/hdl/DataMem.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/reg.v
+    Info (12023): Found entity 1: RegisterFile File: C:/Users/shuge/Downloads/RISCVcore/hdl/Reg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/instrmem.v
+    Info (12023): Found entity 1: InstrMem File: C:/Users/shuge/Downloads/RISCVcore/hdl/InstrMem.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/pcmux.v
+    Info (12023): Found entity 1: PCmux File: C:/Users/shuge/Downloads/RISCVcore/hdl/PCmux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/pcplus4.v
+    Info (12023): Found entity 1: PCplus4 File: C:/Users/shuge/Downloads/RISCVcore/hdl/PCplus4.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/extend.v
+    Info (12023): Found entity 1: Extend File: C:/Users/shuge/Downloads/RISCVcore/hdl/Extend.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/shuge/downloads/riscvcore/hdl/alu.v
+    Info (12023): Found entity 1: ALU File: C:/Users/shuge/Downloads/RISCVcore/hdl/ALU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file riscvcore.v
+    Info (12023): Found entity 1: RISCVCore File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 6
+Info (12127): Elaborating entity "RISCVCore" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at RISCVCore.v(222): truncated value with size 32 to match size of target (26) File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 222
+Warning (10034): Output port "DRAM_ADDR" at RISCVCore.v(14) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+Warning (10034): Output port "DRAM_BA" at RISCVCore.v(15) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 15
+Warning (10034): Output port "HEX0" at RISCVCore.v(27) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+Warning (10034): Output port "HEX1" at RISCVCore.v(28) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+Warning (10034): Output port "HEX2" at RISCVCore.v(29) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+Warning (10034): Output port "HEX3" at RISCVCore.v(30) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+Warning (10034): Output port "HEX4" at RISCVCore.v(31) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+Warning (10034): Output port "HEX5[7..1]" at RISCVCore.v(32) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+Warning (10034): Output port "VGA_B" at RISCVCore.v(44) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 44
+Warning (10034): Output port "VGA_G" at RISCVCore.v(45) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 45
+Warning (10034): Output port "VGA_R" at RISCVCore.v(47) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 47
+Warning (10034): Output port "DRAM_CAS_N" at RISCVCore.v(16) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 16
+Warning (10034): Output port "DRAM_CKE" at RISCVCore.v(17) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 17
+Warning (10034): Output port "DRAM_CLK" at RISCVCore.v(18) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 18
+Warning (10034): Output port "DRAM_CS_N" at RISCVCore.v(19) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 19
+Warning (10034): Output port "DRAM_LDQM" at RISCVCore.v(21) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 21
+Warning (10034): Output port "DRAM_RAS_N" at RISCVCore.v(22) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 22
+Warning (10034): Output port "DRAM_UDQM" at RISCVCore.v(23) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 23
+Warning (10034): Output port "DRAM_WE_N" at RISCVCore.v(24) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 24
+Warning (10034): Output port "VGA_HS" at RISCVCore.v(46) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 46
+Warning (10034): Output port "VGA_VS" at RISCVCore.v(48) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 48
+Warning (10034): Output port "GSENSOR_CS_N" at RISCVCore.v(51) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 51
+Warning (10034): Output port "GSENSOR_SCLK" at RISCVCore.v(53) has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 53
+Info (12128): Elaborating entity "InstrMem" for hierarchy "InstrMem:instr_mem" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 114
+Warning (10030): Net "memory.data_a" at InstrMem.v(7) has no driver or initial value, using a default initial value '0' File: C:/Users/shuge/Downloads/RISCVcore/hdl/InstrMem.v Line: 7
+Warning (10030): Net "memory.waddr_a" at InstrMem.v(7) has no driver or initial value, using a default initial value '0' File: C:/Users/shuge/Downloads/RISCVcore/hdl/InstrMem.v Line: 7
+Warning (10030): Net "memory.we_a" at InstrMem.v(7) has no driver or initial value, using a default initial value '0' File: C:/Users/shuge/Downloads/RISCVcore/hdl/InstrMem.v Line: 7
+Info (12128): Elaborating entity "DecodeFields" for hierarchy "DecodeFields:decode" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 125
+Info (12128): Elaborating entity "Control" for hierarchy "Control:control" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 142
+Info (12128): Elaborating entity "PCplus4" for hierarchy "PCplus4:pc_plus4" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 148
+Info (12128): Elaborating entity "Extend" for hierarchy "Extend:extend" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 155
+Info (12128): Elaborating entity "PCplusimm" for hierarchy "PCplusimm:pc_plus_imm" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 162
+Info (12128): Elaborating entity "PCmux" for hierarchy "PCmux:pc_mux" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 170
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:reg_file" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 183
+Warning (10240): Verilog HDL Always Construct warning at Reg.v(20): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct File: C:/Users/shuge/Downloads/RISCVcore/hdl/Reg.v Line: 20
+Info (12128): Elaborating entity "ALUmux" for hierarchy "ALUmux:alu_mux" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 191
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 200
+Info (10264): Verilog HDL Case Statement information at ALU.v(8): all case item expressions in this case statement are onehot File: C:/Users/shuge/Downloads/RISCVcore/hdl/ALU.v Line: 8
+Info (12128): Elaborating entity "DataMem" for hierarchy "DataMem:data_mem" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 209
+Info (12128): Elaborating entity "WBmux" for hierarchy "WBmux:wb_mux" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 217
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "InstrMem:instr_mem|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/RISCVCore.ram0_InstrMem_8f043998.hdl.mif
+Info (12130): Elaborated megafunction instantiation "InstrMem:instr_mem|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "InstrMem:instr_mem|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/RISCVCore.ram0_InstrMem_8f043998.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ql61.tdf
+    Info (12023): Found entity 1: altsyncram_ql61 File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 28
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a12" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 287
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a13" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 308
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a14" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 329
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a15" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 350
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a16" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 371
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a17" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 392
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a18" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 413
+        Warning (14320): Synthesized away node "InstrMem:instr_mem|altsyncram:memory_rtl_0|altsyncram_ql61:auto_generated|ram_block1a19" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/db/altsyncram_ql61.tdf Line: 434
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "DRAM_DQ[0]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[1]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[2]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[3]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[4]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[5]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[6]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[7]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[8]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[9]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[10]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[11]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[12]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[13]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[14]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "DRAM_DQ[15]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 20
+    Warning (13040): bidirectional pin "GSENSOR_SDI" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 54
+    Warning (13040): bidirectional pin "GSENSOR_SDO" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 55
+    Warning (13040): bidirectional pin "ARDUINO_IO[0]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[1]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[2]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[3]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[4]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[5]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[6]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[7]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[8]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[9]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[10]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[11]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[12]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[13]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[14]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_IO[15]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 58
+    Warning (13040): bidirectional pin "ARDUINO_RESET_N" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 59
+    Warning (13040): bidirectional pin "GPIO[0]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[1]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[2]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[3]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[4]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[5]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[6]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[7]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[8]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[9]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[10]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[11]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[12]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[13]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[14]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[15]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[16]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[17]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[18]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[19]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[20]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[21]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[22]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[23]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[24]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[25]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[26]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[27]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[28]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[29]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[30]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[31]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[32]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[33]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[34]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+    Warning (13040): bidirectional pin "GPIO[35]" has no driver File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 63
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 14
+    Warning (13410): Pin "DRAM_BA[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 15
+    Warning (13410): Pin "DRAM_BA[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 15
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 16
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 17
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 18
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 19
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 21
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 22
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 23
+    Warning (13410): Pin "DRAM_WE_N" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 24
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX0[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 27
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX1[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 28
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX2[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 29
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX3[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 30
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX4[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 31
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "HEX5[7]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 32
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 44
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 44
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 44
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 44
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 45
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 45
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 45
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 45
+    Warning (13410): Pin "VGA_HS" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 46
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 47
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 47
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 47
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 47
+    Warning (13410): Pin "VGA_VS" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 48
+    Warning (13410): Pin "GSENSOR_CS_N" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 51
+    Warning (13410): Pin "GSENSOR_SCLK" is stuck at GND File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 53
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 20 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 15 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ADC_CLK_10" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 9
+    Warning (15610): No output dependent on input pin "MAX10_CLK2_50" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 11
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 35
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 41
+    Warning (15610): No output dependent on input pin "GSENSOR_INT[1]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 52
+    Warning (15610): No output dependent on input pin "GSENSOR_INT[2]" File: C:/Users/shuge/Downloads/RISCVcore/synthesis/RISCVCore.v Line: 52
+Info (21057): Implemented 274 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 17 input pins
+    Info (21059): Implemented 97 output pins
+    Info (21060): Implemented 71 bidirectional pins
+    Info (21061): Implemented 65 logic cells
+    Info (21064): Implemented 24 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 214 warnings
+    Info: Peak virtual memory: 4776 megabytes
+    Info: Processing ended: Sun Oct 05 18:33:04 2025
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
+
+

@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sun Oct 05 18:33:13 2025
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : RISCVCore
+Top-level Entity Name : RISCVCore
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 66 / 49,760 ( < 1 % )
+    Total combinational functions : 66 / 49,760 ( < 1 % )
+    Dedicated logic registers : 38 / 49,760 ( < 1 % )
+Total registers : 38
+Total pins : 185 / 360 ( 51 % )
+Total virtual pins : 0
+Total memory bits : 24,576 / 1,677,312 ( 1 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
