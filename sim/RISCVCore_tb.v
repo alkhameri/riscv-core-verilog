@@ -3,11 +3,92 @@
 module RISCVCore_tb;
     // Clock and reset
     reg clk, rst;
-    
-    // Instantiate the processor
+
+    // Board-level port signals (tie-offs / probes)
+    wire ADC_CLK_10 = 1'b0;
+    wire MAX10_CLK1_50; // driven by testbench clock
+    wire MAX10_CLK2_50 = 1'b0;
+
+    wire [12:0] DRAM_ADDR;
+    wire [1:0] DRAM_BA;
+    wire DRAM_CAS_N;
+    wire DRAM_CKE;
+    wire DRAM_CLK;
+    wire DRAM_CS_N;
+    wire [15:0] DRAM_DQ;
+    wire DRAM_LDQM;
+    wire DRAM_RAS_N;
+    wire DRAM_UDQM;
+    wire DRAM_WE_N;
+
+    wire [7:0] HEX0;
+    wire [7:0] HEX1;
+    wire [7:0] HEX2;
+    wire [7:0] HEX3;
+    wire [7:0] HEX4;
+    wire [7:0] HEX5;
+
+    wire [1:0] KEY = {1'b1, ~rst};
+    wire [9:0] LEDR;
+    wire [9:0] SW = 10'b0;
+
+    wire [3:0] VGA_B;
+    wire [3:0] VGA_G;
+    wire VGA_HS;
+    wire [3:0] VGA_R;
+    wire VGA_VS;
+
+    wire GSENSOR_CS_N;
+    wire [2:1] GSENSOR_INT;
+    wire GSENSOR_SCLK;
+    wire GSENSOR_SDI;
+    wire GSENSOR_SDO;
+
+    wire [15:0] ARDUINO_IO;
+    wire ARDUINO_RESET_N;
+    wire [35:0] GPIO;
+
+    // Drive internal board clock from TB clock
+    assign MAX10_CLK1_50 = clk;
+
+    // Instantiate the board-style top module directly (named ports)
     RISCVCore dut (
-        .clk(clk),
-        .rst(rst)
+        .ADC_CLK_10(ADC_CLK_10),
+        .MAX10_CLK1_50(MAX10_CLK1_50),
+        .MAX10_CLK2_50(MAX10_CLK2_50),
+        .DRAM_ADDR(DRAM_ADDR),
+        .DRAM_BA(DRAM_BA),
+        .DRAM_CAS_N(DRAM_CAS_N),
+        .DRAM_CKE(DRAM_CKE),
+        .DRAM_CLK(DRAM_CLK),
+        .DRAM_CS_N(DRAM_CS_N),
+        .DRAM_DQ(DRAM_DQ),
+        .DRAM_LDQM(DRAM_LDQM),
+        .DRAM_RAS_N(DRAM_RAS_N),
+        .DRAM_UDQM(DRAM_UDQM),
+        .DRAM_WE_N(DRAM_WE_N),
+        .HEX0(HEX0),
+        .HEX1(HEX1),
+        .HEX2(HEX2),
+        .HEX3(HEX3),
+        .HEX4(HEX4),
+        .HEX5(HEX5),
+        .KEY(KEY),
+        .LEDR(LEDR),
+        .SW(SW),
+        .VGA_B(VGA_B),
+        .VGA_G(VGA_G),
+        .VGA_HS(VGA_HS),
+        .VGA_R(VGA_R),
+        .VGA_VS(VGA_VS),
+        .GSENSOR_CS_N(GSENSOR_CS_N),
+        .GSENSOR_INT(GSENSOR_INT),
+        .GSENSOR_SCLK(GSENSOR_SCLK),
+        .GSENSOR_SDI(GSENSOR_SDI),
+        .GSENSOR_SDO(GSENSOR_SDO),
+        .ARDUINO_IO(ARDUINO_IO),
+        .ARDUINO_RESET_N(ARDUINO_RESET_N),
+        .GPIO(GPIO)
     );
     
     // Clock generation
@@ -29,19 +110,19 @@ module RISCVCore_tb;
         
         $display("Reset complete, starting tests...");
         
-        // Test 1: Basic ALU operations
+        // test alu
         test_alu_operations();
         
-        // Test 2: Memory operations  
+        // test mem
         test_memory_operations();
         
-        // Test 3: Branch operations
+        // test branch
         test_branch_operations();
         
-        // Test 4: Jump operations
+        // test jump
         test_jump_operations();
         
-        // Test 5: Register file operations
+        // test reg
         test_register_operations();
         
         $display("=== All Tests Completed ===");
@@ -184,7 +265,7 @@ module RISCVCore_tb;
         end
     endtask
     
-    // Helper task to run N instructions
+    // Helper task to run instructions
     task run_instructions;
         input [31:0] count;
         integer i;
@@ -201,8 +282,8 @@ module RISCVCore_tb;
         $monitor("Time: %0t | PC: 0x%08h | Instr: 0x%08h | RegWrite: %b | ALUSrc: %b | MemWrite: %b", 
                  $time, dut.PC, dut.Instr, dut.RegWrite, dut.ALUSrc, dut.MemWrite);
     end
-    
-    // Generate VCD file for waveform viewing
+
+    // vcd file
     initial begin
         $dumpfile("riscv_core.vcd");
         $dumpvars(0, RISCVCore_tb);

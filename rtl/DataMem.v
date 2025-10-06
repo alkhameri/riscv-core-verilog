@@ -2,15 +2,16 @@ module DataMem(
     input clk,
     input MemWrite,
     input [31:0] ALUResult, WriteData,
-    output [31:0] ReadData
+    output reg [31:0] ReadData
 );
     reg [31:0] memory [0:1023]; // 1KB memory
 
-    // Read operation (asynchronous)
-    assign ReadData = memory[ALUResult[11:2]]; 
-
-    // Write operation (synchronous)
+    // Synchronous read and write to aid block-RAM inference
     always @(posedge clk) begin
+        // Read (registered output)
+        ReadData <= memory[ALUResult[11:2]];
+
+        // Write
         if (MemWrite) begin
             memory[ALUResult[11:2]] <= WriteData;
         end
