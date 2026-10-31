@@ -1,0 +1,48 @@
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C7G
+set_global_assignment -name TOP_LEVEL_ENTITY de10_lite_top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name SDC_FILE de10_lite.sdc
+
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_regfile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_forwarding.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_decode.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_decode_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_predictor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_fetch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_pmp.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_muldiv.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_csr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_execute_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_memory_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_writeback_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_pipeline_control.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_core.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_uart_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/rv32_soc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../rtl/de10_lite_top.sv
+
+set_location_assignment PIN_P11 -to MAX10_CLK1_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MAX10_CLK1_50
+set_location_assignment PIN_B8 -to RESET_N
+set_instance_assignment -name IO_STANDARD "3.3 V Schmitt Trigger" -to RESET_N
+# Arduino D1. Connect to the RX input of a 3.3 V USB-to-TTL serial adapter.
+set_location_assignment PIN_AB6 -to UART_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to UART_TX
+
+set_location_assignment PIN_A8 -to {LEDR[0]}
+set_location_assignment PIN_A9 -to {LEDR[1]}
+set_location_assignment PIN_A10 -to {LEDR[2]}
+set_location_assignment PIN_B10 -to {LEDR[3]}
+set_location_assignment PIN_D13 -to {LEDR[4]}
+set_location_assignment PIN_C13 -to {LEDR[5]}
+set_location_assignment PIN_E14 -to {LEDR[6]}
+set_location_assignment PIN_D14 -to {LEDR[7]}
+set_location_assignment PIN_A11 -to {LEDR[8]}
+set_location_assignment PIN_B11 -to {LEDR[9]}
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to {LEDR[*]}

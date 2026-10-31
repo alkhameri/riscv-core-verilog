@@ -1,0 +1,96 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,14 +1,15 @@
+-CROSS ?= riscv64-unknown-elf-
++CROSS ?= riscv64-elf-
+ CC := $(CROSS)gcc
+ AS := $(CROSS)gcc
+ OBJCOPY := $(CROSS)objcopy
+ 
+ INCLUDES := -Iinclude
+-CFLAGS := -march=rv32imac_zicsr -mabi=ilp32 -Wall -Wextra -O2 -ffreestanding -nostdlib -nostartfiles $(INCLUDES)
++CFLAGS := -march=rv32ima_zicsr_zifencei -mno-relax -mabi=ilp32 -Wall -Wextra -O2 -ffreestanding -nostdlib -nostartfiles $(INCLUDES)
+ ASFLAGS := $(CFLAGS)
+ LDFLAGS := -T linker.ld -nostdlib -nostartfiles -ffreestanding
+ 
+-SRC_C := $(wildcard src/kernel/*.c)
++SRC_C := $(filter-out src/kernel/vm.c,$(wildcard src/kernel/*.c))
++LIBGCC := $(shell $(CC) -march=rv32im -mabi=ilp32 -print-libgcc-file-name)
+ SRC_S := $(wildcard src/boot/*.S)
+ OBJ := $(SRC_C:.c=.o) $(SRC_S:.S=.o)
+ 
+@@ -17,7 +18,7 @@
+ all: kernel.elf
+ 
+ kernel.elf: $(OBJ) linker.ld
+-	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS) $(LIBGCC)
+ 
+ %.o: %.c
+ 	$(CC) $(CFLAGS) -c $< -o $@
+--- a/linker.ld
++++ b/linker.ld
+@@ -3,7 +3,7 @@
+ 
+ MEMORY
+ {
+-    RAM (rwx) : ORIGIN = 0x80000000, LENGTH = 128M
++    RAM (rwx) : ORIGIN = 0x80000000, LENGTH = 128K
+ }
+ 
+ SECTIONS
+@@ -30,6 +30,7 @@
+     {
+         __bss_start = .;
+         *(.bss*)
++        *(.sbss*)
+         *(COMMON)
+         __bss_end = .;
+     } > RAM
+--- a/include/common.h
++++ b/include/common.h
+@@ -6,7 +6,7 @@
+ 
+ /* QEMU virt machine memory map */
+ #define RAM_BASE        0x80000000UL
+-#define RAM_SIZE        (128UL * 1024UL * 1024UL)
++#define RAM_SIZE        (128UL * 1024UL)
+ #define CLINT_BASE      0x02000000UL
+ #define PLIC_BASE       0x0C000000UL
+ #define UART0_BASE      0x10000000UL
+--- a/src/boot/start.S
++++ b/src/boot/start.S
+@@ -46,6 +46,10 @@
+  * Sets up stack, clears .bss, installs trap vector, jumps to C entry.
+  */
+ _start:
++    .option push
++    .option norelax
++    la      gp, __global_pointer$
++    .option pop
+     la      sp, _stack_top
+ 
+     la      t0, __bss_start
+@@ -158,7 +162,7 @@
+     lw      t5,  TF_x30(sp)
+     lw      t6,  TF_x31(sp)
+ 
+-    addi    sp, sp, TF_SIZE
++    lw      sp, TF_x2(sp)
+     mret
+ 
+     .globl thread_launch
+--- /dev/null
++++ b/src/kernel/de10_vm.c
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: MIT
++#include "vm.h"
++#include "common.h"
++
++// The DE10-Lite port runs this kernel in M mode with physical addresses.
++// PMP is available for future user tasks; Sv32 and S mode are not implemented.
++void vm_init(void) {}
++void vm_map_identity(uintptr_t start, uintptr_t end) {
++    (void)start;
++    (void)end;
++}

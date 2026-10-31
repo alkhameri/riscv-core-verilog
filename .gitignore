@@ -14,6 +14,11 @@
 # Simulation waveforms / generated outputs
 *.vcd
 obj_dir/
+build/
+/fpga/db/
+/fpga/incremental_db/
+/fpga/output_files/
+*.o
 
 # OS files
 .DS_Store
