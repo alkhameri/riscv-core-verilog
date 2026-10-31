@@ -1,0 +1,16 @@
+rtl/rv32_pkg.sv
+rtl/rv32_alu.sv
+rtl/rv32_regfile.sv
+rtl/rv32_forwarding.sv
+rtl/rv32_decode.sv
+rtl/rv32_decode_stage.sv
+rtl/rv32_predictor.sv
+rtl/rv32_fetch.sv
+rtl/rv32_pmp.sv
+rtl/rv32_muldiv.sv
+rtl/rv32_csr.sv
+rtl/rv32_execute_stage.sv
+rtl/rv32_memory_stage.sv
+rtl/rv32_writeback_stage.sv
+rtl/rv32_pipeline_control.sv
+rtl/rv32_core.sv
