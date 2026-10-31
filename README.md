@@ -58,9 +58,9 @@ Both simulation paths require boot output, activity from both threads, and at le
 
 ## Pipeline and design choices
 
-<img src="docs/images/five-stage-pipeline.svg" width="720" alt="Five instructions overlapping across the IF, ID, EX, MEM, and WB stages over successive clock cycles">
+<img src="docs/images/five-stage-pipeline.png" width="720" alt="Five instructions overlapping across the IF, ID, EX, MEM, and WB stages over successive clock cycles">
 
-Stage-overlap diagram by Inductiveload, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:5_Stage_Pipeline.svg), public domain. Included unchanged. The stage order matches this core: instruction fetch, decode/register read, execute, memory access, then writeback. The image shows ideal overlap; our fetch buffering, stalls, forwarding, prediction, and trap handling are described below.
+Stage-overlap diagram by Inductiveload, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:5_Stage_Pipeline.svg), public domain. White background added and exported as PNG for readability in light and dark themes. The stage order matches this core: instruction fetch, decode/register read, execute, memory access, then writeback. The image shows ideal overlap; our fetch buffering, stalls, forwarding, prediction, and trap handling are described below.
 
 Five execution stages balance synchronous FPGA RAM access, a short arithmetic path, and branch recovery cost. The frontend also has a held request, one outstanding transaction, and a two-entry instruction FIFO. Its buffering is explicit; this is not a claim that all fetches have a fixed five-cycle latency. Selecting a different stage count needs actual Quartus area and timing comparisons.
 
