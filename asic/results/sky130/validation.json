@@ -1,0 +1,17 @@
+{
+  "netlist_sha256": "b8098bff607a45ca8891192e5daded18527751f342594a5f0ffa511c7fb51739",
+  "cell_models_sha256": "b9190c1c15c5007d7326df60f4f99c2b4a887d5fd0b9ab5387742cd4c871ecf6",
+  "regression_log_sha256": "f35c0503933e24c38e950b9a8e60dda5176b9d0749524ad1fbfc70800ee4f3f5",
+  "instruction_model_sha256": "63811e3852abed3d4c135a9ba754ed6a44618960750ef6fc89ed7aa8f9f3c09d",
+  "verilator": "Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905",
+  "instruction_model_self_tests_passed": true,
+  "firmware_seeds_passed": [
+    1,
+    71
+  ],
+  "firmware_elf_sha256": "01e8701488b608a4c4e80537aeac335b589bb43e72c16895fad3de5cfbb8c6d9",
+  "kernel_passed": true,
+  "kernel_trace_matches_reference": true,
+  "kernel_elf_sha256": "2a1da92bc5e45d6ca6e222fc1bf91f63c2a9cd54a76f8a5c52aa3031ea1cd6b4",
+  "kernel_trace_sha256": "2621cb20d178c5136f263bb4cc624d7c2d8491503c8885535476922d83d9aafd"
+}

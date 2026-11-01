@@ -15,10 +15,13 @@
 *.vcd
 obj_dir/
 build/
+/asic/runs/
+/core
 /fpga/db/
 /fpga/incremental_db/
 /fpga/output_files/
 *.o
+__pycache__/
 
 # OS files
 .DS_Store

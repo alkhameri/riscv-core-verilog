@@ -6,6 +6,14 @@ The CPU, shared RAM, timer, and serial transmitter are all RTL. The DE10-Lite do
 
 **Current validation:** Verilator 5.052, warning-clean lint, independent instruction-model comparisons, directed firmware, and complete-system kernel simulation. Quartus synthesis, resource usage, timing closure, and physical-board execution have not been measured. The 50 MHz clock constraint is a target, not a verified Fmax. This is not an ISA certification or formal proof.
 
+## SKY130 ASIC layout
+
+<img src="docs/images/rv32-core-sky130.png" width="720" alt="KLayout view of the routed SKY130 RV32 CPU macro">
+
+The SKY130A implementation of `rv32_core` passes OpenLane signoff at **16.67 MHz (60 ns)** across nine timing corners. Worst setup slack is **+1.988 ns** and worst hold slack is **+0.043 ns**. Magic DRC, KLayout DRC, GDS-based LVS, antenna, slew, and capacitance checks are clean. The final gate-level netlist boots the kernel and matches the RTL retirement trace exactly.
+
+The image shows the final GDS interconnect layers in KLayout on a white background. This is a CPU macro; memory, peripherals, and a chip pad ring are external. Download the [GDS](asic/results/sky130/rv32_core.gds.gz), inspect the [signoff summary](asic/results/sky130/signoff.json), or see the [ASIC build documentation](asic/README.md) for the complete deliverables and reproduction steps.
+
 ## Build and test
 
 Requirements: Verilator, a C++17 compiler, Make, Python 3, and a bare-metal RISC-V GCC toolchain with an RV32IM multilib. On macOS:
@@ -142,7 +150,7 @@ The checked run used Verilator 5.052 and GCC 16.2.0. `make test test-soc test-ke
 - On an alternating-branch unit workload after warmup, the tournament predictor made 896/896 correct direction predictions; the standalone two-bit bimodal baseline made 0/896. This is a targeted correlation test, not a general accuracy claim. Target-cache associativity, return-stack selection, coroutine hints, clearing, and disable are checked separately.
 - The adapted kernel reached timer tick 3 with both worker threads active after 333,826 retired instructions and 1,580,494 cycles with randomized memory latency. The complete RTL system decoded the same milestones from its serial pin after 1,869,714 cycles.
 
-The simulations are bounded smoke and regression tests. Upstream architectural compliance suites, formal proofs, longer kernel stress runs, synthesis, and hardware tests remain useful next validation steps.
+The simulations are bounded smoke and regression tests. Upstream architectural compliance suites, formal proofs, longer kernel stress runs, Quartus synthesis, and hardware tests remain useful next validation steps.
 
 ## Source map and references
 

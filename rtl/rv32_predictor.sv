@@ -12,7 +12,8 @@ module rv32_predictor (
     input rv32_pkg::prediction_t update_prediction
 );
     // 256-entry bimodal and gshare tables, with a per-PC tournament chooser.
-    logic [1:0] bimodal [256], gshare [256], chooser [256];
+    // Packed tables let us reset all entries without a large procedural loop.
+    logic [255:0][1:0] bimodal, gshare, chooser;
     logic [7:0] history;
     // 32 sets, two ways. Full tags avoid false hits from unrelated addresses.
     logic valid [2][32];
@@ -67,11 +68,9 @@ module rv32_predictor (
             history <= 0;
             stack_pointer <= 0;
             stack_count <= 0;
-            for (int i = 0; i < 256; i++) begin
-                bimodal[i] <= 2'b01;
-                gshare[i] <= 2'b01;
-                chooser[i] <= 2'b01;
-            end
+            bimodal <= {256{2'b01}};
+            gshare <= {256{2'b01}};
+            chooser <= {256{2'b01}};
             for (int i = 0; i < 32; i++) begin
                 valid[0][i] <= 0;
                 valid[1][i] <= 0;
